@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Bank Mandiri Mobile Apps"
+rootProject.name = "MandiriNews"
 include(":app")
  

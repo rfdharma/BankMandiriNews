@@ -11,9 +11,8 @@
     <style name="Theme.BankMandiriMobileApps" parent="Base.Theme.BankMandiriMobileApps" />
 
     <style name="Theme.App.SplashScreen" parent="Theme.SplashScreen">
-        <!-- Customize your light theme here. -->
         <item name="windowSplashScreenBackground">@color/mandiri</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/mandirilogo</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/board</item>
         <item name="postSplashScreenTheme">@style/Base.Theme.BankMandiriMobileApps</item>
     </style>
 

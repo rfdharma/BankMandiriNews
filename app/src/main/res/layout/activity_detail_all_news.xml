@@ -90,7 +90,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="-10dp"
                 android:layout_marginRight="20dp"
                 android:text="@string/Description"
                 android:textColor="@color/grey"
@@ -113,7 +113,7 @@
                 android:scrollbars="vertical"
                 android:text="description"
                 android:textColor="@color/grey"
-                android:textSize="14sp"/>
+                android:textSize="13sp"/>
 
             <TextView
                 android:id="@+id/Content"
@@ -148,7 +148,7 @@
                 android:scrollbars="vertical"
                 android:text="contentberita"
                 android:textColor="@color/grey"
-                android:textSize="14sp"/>
+                android:textSize="13sp"/>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/informasi"
