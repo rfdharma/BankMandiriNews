@@ -54,13 +54,15 @@
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:layout_marginTop="-20dp"
-                android:layout_marginBottom="-20dp"
                 android:layout_below="@id/informasi"
-                app:layout_constraintBottom_toBottomOf="@+id/titleDetail"
-                tools:srcCompat="@tools:sample/avatars"
+                android:layout_centerInParent="true"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"/>
+                android:layout_marginTop="-20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="@+id/titleDetail"
+                tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/titleDetail"
@@ -90,7 +92,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="-10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
                 android:text="@string/Description"
                 android:textColor="@color/grey"

@@ -40,7 +40,6 @@ class MainActivity : AppCompatActivity() {
         val textView = findViewById<TextView>(R.id.semuaberita)
         val text = textView.text.toString()
 
-        // Membuat SpannableString dengan efek underline
         val spannable = SpannableString(text)
         spannable.setSpan(UnderlineSpan(), 0, text.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 
@@ -53,7 +52,6 @@ class MainActivity : AppCompatActivity() {
         val textView = findViewById<TextView>(R.id.beritaterkini)
         val text = textView.text.toString()
 
-        // Membuat SpannableString dengan efek underline
         val spannable = SpannableString(text)
         spannable.setSpan(UnderlineSpan(), 0, text.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 
@@ -70,7 +68,6 @@ class MainActivity : AppCompatActivity() {
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         val recyclerViewAllNews: RecyclerView = findViewById(R.id.recyclerViewAllNews)
 
-        // Inisialisasi adapter dengan data awal berupa daftar kosong
         topNewsAdapter = TopNewsAdapter(emptyList())
         allNewsAdapter = AllNewsAdapter(emptyList())
 
