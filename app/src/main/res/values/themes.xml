@@ -1,0 +1,32 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.BankMandiriMobileApps" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">20dp</item>
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <style name="Theme.BankMandiriMobileApps" parent="Base.Theme.BankMandiriMobileApps" />
+
+    <style name="Theme.App.SplashScreen" parent="Theme.SplashScreen">
+        <!-- Customize your light theme here. -->
+        <item name="windowSplashScreenBackground">@color/mandiri</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/mandirilogo</item>
+        <item name="postSplashScreenTheme">@style/Base.Theme.BankMandiriMobileApps</item>
+    </style>
+
+    <style name="SlideActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_left</item>
+    </style>
+
+    <style name="custom_card_view" parent="Widget.MaterialComponents.CardView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">30dp</item>
+        <item name="cornerSizeTopLeft">30dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+</resources>

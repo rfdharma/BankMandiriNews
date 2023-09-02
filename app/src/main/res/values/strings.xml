@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Bank Mandiri Mobile Apps</string>
+    <string name="title_activity_detail_berita_terkini">DetailBeritaTerkini</string>
+    <string name="titleberitaterkini">Berita Terkini</string>
+    <string name="titlesemuaberita">Semua Berita</string>
+    <string name="Description">Description</string>
+    <string name="Content">Content</string>
+    <string name="detailnews">Selengkapnya</string>
+    <string name="apptitle">Mandiri News</string>
+    <string name="news">Berita</string>
+    <string name="profilenama">Firdaus Dharma</string>
+    <string name="connect">Connected Accounts</string>
+    <string name="profilejob">Data Science, Universitas Airlangga</string>
+    <string name="bio">"As an undergraduate student majoring in Data Science Technology at Universitas Airlangga, I've gained a solid grasp of core data science concepts like statistics, data processing, visualization, and machine learning. I've actively engaged in numerous data science projects, both collaboratively and independently. These projects involved creating diverse data visualizations, models, and analyses from various datasets to extract valuable insights and outcomes."</string>
+</resources>
