@@ -1,4 +1,4 @@
-package com.bankmandiri.mobileapps.activity
+package com.bankmandiri.mobileapps.activity.navigation
 
 import android.content.Intent
 import android.net.Uri

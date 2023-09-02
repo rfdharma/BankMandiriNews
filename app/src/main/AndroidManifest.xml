@@ -26,13 +26,13 @@
             android:name=".activity.news.AllNewsActivity"
             android:exported="false"/>
         <activity
-            android:name=".activity.ProfileActivity"
+            android:name=".activity.navigation.ProfileActivity"
             android:exported="false"/>
         <activity
-            android:name=".activity.SearchActivity"
+            android:name=".activity.navigation.SearchActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.navigation.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.App.SplashScreen">
             <intent-filter>

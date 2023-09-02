@@ -1,4 +1,4 @@
-package com.bankmandiri.mobileapps.activity
+package com.bankmandiri.mobileapps.activity.navigation
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -133,7 +133,6 @@ class MainActivity : AppCompatActivity() {
         fetchAllNews()
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
-        bottomNavigationView.selectedItemId = R.id.bottom_home
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.bottom_home -> true
@@ -152,6 +151,7 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+
     }
 
     private fun fetchNews() {
