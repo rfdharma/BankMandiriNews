@@ -31,8 +31,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var allNewsAdapter: AllNewsAdapter
 
     private var currentPageTopNews = 1
-    private var currentPageAllNews = 1
     private var isLoadingTopNews = false
+    private var currentPageAllNews = 1
     private var isLoadingAllNews = false
     private var lastVisibleItemPosition = 0
 

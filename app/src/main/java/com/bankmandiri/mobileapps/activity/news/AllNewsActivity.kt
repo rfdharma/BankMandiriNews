@@ -17,6 +17,8 @@ import kotlinx.coroutines.withContext
 class AllNewsActivity : AppCompatActivity() {
     private lateinit var allNewsAdapter: AllNewsAdapter
     private lateinit var recyclerView: RecyclerView
+    private var currentPageAllNews = 1
+    private var isLoadingAllNews = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,11 +50,11 @@ class AllNewsActivity : AppCompatActivity() {
     private fun fetchAllNews() {
         val apiKey = "63a860ab3e8548b9bdcf5769dfb50a9d"
         val q = "indonesia"
-        val p = 1
+
         val apiService = ApiClient.apiService
         GlobalScope.launch(Dispatchers.IO) {
             try {
-                val response = apiService.getEverything(q, p,apiKey)
+                val response = apiService.getEverything(q, currentPageAllNews, apiKey)
                 if (response.isSuccessful) {
                     val articles = response.body()?.articles ?: emptyList()
 
@@ -67,9 +69,10 @@ class AllNewsActivity : AppCompatActivity() {
                                 article.content != null
                     }
                     withContext(Dispatchers.Main) {
-                        // Update allNewsAdapter with news data
-                        allNewsAdapter.newsList = validArticles
+                        // Append the new data to the adapter
+                        allNewsAdapter.newsList += validArticles
                         allNewsAdapter.notifyDataSetChanged()
+                        isLoadingAllNews = false
                     }
                 }
             } catch (e: Exception) {

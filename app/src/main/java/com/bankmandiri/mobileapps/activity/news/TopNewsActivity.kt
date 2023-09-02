@@ -75,12 +75,22 @@ class TopNewsActivity : AppCompatActivity() {
                 val response = apiService.getTopHeadlines(country, currentPage, apiKey)
                 if (response.isSuccessful) {
                     val articles = response.body()?.articles ?: emptyList()
+
+                    // Filter out articles with null values
+                    val validArticles = articles.filter { article ->
+                        article.publishedAt != null &&
+                                article.author != null &&
+                                article.urlToImage != null &&
+                                article.description != null &&
+                                article.source != null &&
+                                article.title != null &&
+                                article.url != null &&
+                                article.content != null
+                    }
+
                     withContext(Dispatchers.Main) {
-                        if (currentPage == 1) {
-                            topNewsAdapter.articles = articles
-                        } else {
-                            topNewsAdapter.articles += articles
-                        }
+                        // Append the new data to the adapter
+                        topNewsAdapter.articles += validArticles
                         topNewsAdapter.notifyDataSetChanged()
                         isLoading = false
                     }
