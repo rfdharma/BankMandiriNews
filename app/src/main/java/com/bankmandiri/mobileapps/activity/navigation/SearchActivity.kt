@@ -142,7 +142,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun fetchAllNews(query: String) {
-        val apiKey = "63a860ab3e8548b9bdcf5769dfb50a9d"
+        val apiKey = "f624b53a7000484ab2aeab1e206d1371"
         val apiService = ApiClient.apiService
         GlobalScope.launch(Dispatchers.IO) {
             try {
@@ -150,7 +150,6 @@ class SearchActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val articles = response.body()?.articles ?: emptyList()
                     resultTextView.text = "${response.body()?.totalResults ?: 0} Result found :"
-
                     val validArticles = articles.filter { article ->
                         article.publishedAt != null &&
                                 article.author != null &&
@@ -161,6 +160,8 @@ class SearchActivity : AppCompatActivity() {
                                 article.url != null &&
                                 article.content != null
                     }
+//                    val totalResults = validArticles.size
+//                    resultTextView.text = "$totalResults Result found :"
                     withContext(Dispatchers.Main) {
                         if (currentPage == 1) {
                             allNewsAdapter.newsList = validArticles

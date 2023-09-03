@@ -66,7 +66,7 @@ class TopNewsActivity : AppCompatActivity() {
     }
 
     private fun fetchNews() {
-        val apiKey = "63a860ab3e8548b9bdcf5769dfb50a9d"
+        val apiKey = "f624b53a7000484ab2aeab1e206d1371"
         val country = "us"
 
         val apiService = ApiClient.apiService

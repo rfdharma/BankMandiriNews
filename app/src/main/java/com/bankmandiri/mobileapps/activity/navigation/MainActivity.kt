@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var topNewsAdapter: TopNewsAdapter
     private lateinit var allNewsAdapter: AllNewsAdapter
+    private lateinit var resultTextView: TextView
+//    private lateinit var resultTextViewAll: TextView
 
     private var currentPageTopNews = 1
     private var isLoadingTopNews = false
@@ -49,30 +51,6 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun seeall(view: View) {
-        val textView = findViewById<TextView>(R.id.seeall)
-        val text = textView.text.toString()
-
-        val spannable = SpannableString(text)
-        spannable.setSpan(UnderlineSpan(), 0, text.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-
-        textView.text = spannable
-        val intent = Intent(this, AllNewsActivity::class.java)
-        startActivity(intent)
-    }
-
-    fun seealltopnews(view: View) {
-        val textView = findViewById<TextView>(R.id.seealltopnews)
-        val text = textView.text.toString()
-
-        val spannable = SpannableString(text)
-        spannable.setSpan(UnderlineSpan(), 0, text.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-
-        textView.text = spannable
-        val intent = Intent(this, TopNewsActivity::class.java)
-        startActivity(intent)
-    }
-
     fun openTopNewsPage(view: View) {
         val textView = findViewById<TextView>(R.id.beritaterkini)
         val text = textView.text.toString()
@@ -84,16 +62,40 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, TopNewsActivity::class.java)
         startActivity(intent)
     }
+    fun seeall(view: View) {
+        val textView = findViewById<TextView>(R.id.seeall)
+        val text = textView.text.toString()
+
+        val spannable = SpannableString(text)
+        spannable.setSpan(UnderlineSpan(), 0, text.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        textView.text = spannable
+        val intent = Intent(this, TopNewsActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun seealltopnews(view: View) {
+        val textView = findViewById<TextView>(R.id.seealltopnews)
+        val text = textView.text.toString()
+
+        val spannable = SpannableString(text)
+        spannable.setSpan(UnderlineSpan(), 0, text.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        textView.text = spannable
+        val intent = Intent(this, AllNewsActivity::class.java)
+        startActivity(intent)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Thread.sleep(300)
         installSplashScreen()
         setContentView(R.layout.activity_main)
 
+        resultTextView = findViewById(R.id.result)
+//        resultTextViewAll = findViewById(R.id.resultall)
         val mandiriLogoImageView = findViewById<ImageView>(R.id.mandirilogo)
 
         mandiriLogoImageView.setOnClickListener {
-            // Recreate the activity to refresh it
             recreate()
         }
 
@@ -187,7 +189,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun fetchNews() {
-        val apiKey = "63a860ab3e8548b9bdcf5769dfb50a9d"
+        val apiKey = "f624b53a7000484ab2aeab1e206d1371"
         val country = "us"
 
         val apiService = ApiClient.apiService
@@ -196,8 +198,7 @@ class MainActivity : AppCompatActivity() {
                 val response = apiService.getTopHeadlines(country, currentPageTopNews, apiKey)
                 if (response.isSuccessful) {
                     val articles = response.body()?.articles ?: emptyList()
-
-                    // Filter out articles with null values
+                    resultTextView.text = "${response.body()?.totalResults ?: 0} Result found :"
                     val validArticles = articles.filter { article ->
                         article.publishedAt != null &&
                                 article.author != null &&
@@ -209,6 +210,8 @@ class MainActivity : AppCompatActivity() {
                                 article.content != null
                     }
 
+//                    val totalResults = validArticles.size
+//                    resultTextView.text = "$totalResults Result found :"
                     withContext(Dispatchers.Main) {
                         // Append the new data to the adapter
                         topNewsAdapter.articles += validArticles
@@ -223,17 +226,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun fetchAllNews() {
-        val apiKey = "63a860ab3e8548b9bdcf5769dfb50a9d"
-        val q = "bank mandiri indonesia"
+        val apiKey = "f624b53a7000484ab2aeab1e206d1371"
+        val q = "indonesia"
         val sort = "relevancy"
-
         val apiService = ApiClient.apiService
         GlobalScope.launch(Dispatchers.IO) {
             try {
                 val response = apiService.getEverything(q, currentPageAllNews, apiKey,sort)
                 if (response.isSuccessful) {
                     val articles = response.body()?.articles ?: emptyList()
-
+//                    resultTextViewAll.text = "${response.body()?.totalResults ?: 0} Result found :"
                     val validArticles = articles.filter { article ->
                         article.publishedAt != null &&
                                 article.author != null &&
@@ -244,6 +246,8 @@ class MainActivity : AppCompatActivity() {
                                 article.url != null &&
                                 article.content != null
                     }
+//                    val totalResults = validArticles.size
+//                    resultTextViewAll.text = "$totalResults Result found :"
                     withContext(Dispatchers.Main) {
                         // Append the new data to the adapter
                         allNewsAdapter.newsList += validArticles

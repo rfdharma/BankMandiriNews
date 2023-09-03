@@ -82,7 +82,7 @@
                 android:onClick="openTopNewsPage"/>
 
             <TextView
-                android:id="@+id/seeall"
+                android:id="@+id/seealltopnews"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -105,11 +105,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="20dp"
                 android:orientation="horizontal"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
-                android:layout_below="@id/beritaterkini"/>
+                android:layout_below="@id/result"/>
 
             <TextView
                 android:layout_width="200dp"
@@ -129,7 +130,7 @@
                 android:onClick="openAllNewsPage"/>
 
             <TextView
-                android:id="@+id/seealltopnews"
+                android:id="@+id/seeall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -145,11 +146,24 @@
                 android:clickable="true"
                 android:onClick="seealltopnews"/>
 
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/result"
+                android:layout_marginLeft="30dp"
+                android:layout_below="@id/beritaterkini"
+                android:layout_marginTop="2dp"
+                android:layout_alignParentLeft="true"
+                android:textSize="13dp"
+                android:textColor="@color/seeall"/>
+
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewAllNews"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="20dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"

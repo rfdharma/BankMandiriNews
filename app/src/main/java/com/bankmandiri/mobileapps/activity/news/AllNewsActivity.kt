@@ -48,8 +48,8 @@ class AllNewsActivity : AppCompatActivity() {
     }
 
     private fun fetchAllNews() {
-        val apiKey = "63a860ab3e8548b9bdcf5769dfb50a9d"
-        val q = "bank mandiri indonesia"
+        val apiKey = "f624b53a7000484ab2aeab1e206d1371"
+        val q = "indonesia"
         val sort = "relevancy"
 
         val apiService = ApiClient.apiService
