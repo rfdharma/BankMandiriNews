@@ -59,26 +59,43 @@
         android:layout_below="@id/mandirilogo"
         android:backgroundTint="@color/broken_white">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 <!--            android:layout_below="@id/appprofile">-->
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
                 android:textStyle="bold"
-                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="25dp"
                 android:id="@+id/beritaterkini"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="30dp"
                 android:text="@string/titleberitaterkini"
                 android:textColor="@color/blue"
                 android:textSize="18dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
                 android:clickable="true"
                 android:onClick="openTopNewsPage"/>
+
+            <TextView
+                android:id="@+id/seeall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="45dp"
+                android:layout_toEndOf="@id/beritaterkini"
+                android:layout_toRightOf="@id/beritaterkini"
+                android:text="@string/seeall"
+                android:textAlignment="textEnd"
+                android:textColor="@color/seeall"
+                android:textSize="14dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
@@ -87,21 +104,42 @@
                 android:layout_gravity="end"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:orientation="horizontal" />
+                android:orientation="horizontal"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/beritaterkini"/>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
                 android:id="@+id/semuaberita"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_below="@id/recyclerView"
                 android:text="@string/titlesemuaberita"
                 android:textColor="@color/blue"
                 android:textSize="18dp"
+                android:layout_marginTop="5dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="5dp"
                 android:clickable="true"
                 android:textStyle="bold"
                 android:onClick="openAllNewsPage"/>
+
+            <TextView
+                android:id="@+id/seealltopnews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="45dp"
+                android:layout_toEndOf="@id/semuaberita"
+                android:layout_toRightOf="@id/semuaberita"
+                android:layout_below="@id/recyclerView"
+                android:text="@string/seeall"
+                android:textAlignment="textEnd"
+                android:textColor="@color/seeall"
+                android:textSize="14dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewAllNews"
@@ -109,10 +147,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/semuaberita"
                 android:layout_gravity="end"
                 android:orientation="vertical" />
 
-        </LinearLayout>
+        </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 
 

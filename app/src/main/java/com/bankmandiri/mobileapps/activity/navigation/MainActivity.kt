@@ -7,6 +7,7 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.UnderlineSpan
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -64,6 +65,13 @@ class MainActivity : AppCompatActivity() {
         Thread.sleep(300)
         installSplashScreen()
         setContentView(R.layout.activity_main)
+
+        val mandiriLogoImageView = findViewById<ImageView>(R.id.mandirilogo)
+
+        mandiriLogoImageView.setOnClickListener {
+            // Recreate the activity to refresh it
+            recreate()
+        }
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         val recyclerViewAllNews: RecyclerView = findViewById(R.id.recyclerViewAllNews)

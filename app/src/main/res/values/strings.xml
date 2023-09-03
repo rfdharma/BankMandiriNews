@@ -11,5 +11,6 @@
     <string name="profilenama">Firdaus Dharma</string>
     <string name="connect">Connected Accounts</string>
     <string name="profilejob">Data Science, Universitas Airlangga</string>
+    <string name="seeall">See All</string>
     <string name="bio">"As an undergraduate student majoring in Data Science Technology at Universitas Airlangga, I've gained a solid grasp of core data science concepts like statistics, data processing, visualization, and machine learning. I've actively engaged in numerous data science projects, both collaboratively and independently. These projects involved creating diverse data visualizations, models, and analyses from various datasets to extract valuable insights and outcomes."</string>
 </resources>
