@@ -39,14 +39,54 @@
         app:labelVisibilityMode="unlabeled"
         app:menu="@menu/bottom_menu" />
 
+    <TextView
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/result"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@id/searchView"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentLeft="true"
+        android:textSize="13dp"
+        android:textColor="@color/seeall"/>
+
+    <TextView
+        android:layout_width="70dp"
+        android:layout_toRightOf="@id/result"
+        android:layout_toEndOf="@id/result"
+        android:layout_height="wrap_content"
+        android:text="Sort by :"
+        android:id="@+id/tulisansort"
+        android:layout_below="@id/searchView"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:textSize="13dp"
+        android:textAlignment="viewEnd"
+        android:textColor="@color/seeall"/>
+    <Spinner
+        android:id="@+id/sortby_spinner"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="20dp"
+        android:textAlignment="textEnd"
+        android:layout_below="@id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/sortBy"
+        android:layout_toRightOf="@id/tulisansort"
+        android:layout_toEndOf="@id/tulisansort"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewAllNews"
         android:layout_width="match_parent"
-        android:layout_below="@id/searchView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentLeft="true"
-        android:layout_margin="15dp"
         android:layout_height="wrap_content"
+        android:layout_below="@id/sortby_spinner"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_gravity="end"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
         android:orientation="vertical" />
 </RelativeLayout>

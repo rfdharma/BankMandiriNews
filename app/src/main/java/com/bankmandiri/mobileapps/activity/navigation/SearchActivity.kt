@@ -3,6 +3,11 @@ package com.bankmandiri.mobileapps.activity.navigation
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.TextView
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,13 +24,20 @@ import kotlinx.coroutines.withContext
 class SearchActivity : AppCompatActivity() {
 
     private lateinit var allNewsAdapter: AllNewsAdapter
+    private lateinit var resultTextView: TextView
+    private lateinit var sortBySpinner: Spinner
+
     private var currentPage = 1
     private var isLoading = false
     private var currentQuery: String? = null
+    private var currentSort = "relevancy" // Default sort option
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
+
+        resultTextView = findViewById(R.id.result)
+        sortBySpinner = findViewById(R.id.sortby_spinner)
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewAllNews)
         allNewsAdapter = AllNewsAdapter(emptyList())
@@ -50,7 +62,7 @@ class SearchActivity : AppCompatActivity() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                // You can implement real-time filtering if needed
+                // Anda dapat mengimplementasikan filter real-time jika diperlukan
                 return true
             }
         })
@@ -77,7 +89,41 @@ class SearchActivity : AppCompatActivity() {
             }
         }
 
-        // Implement infinite scrolling here
+        // Mendapatkan daftar pilihan pengurutan dari sumber daya string
+        val sortOptions = resources.getStringArray(R.array.sortBy)
+
+        // Membuat adapter untuk Spinner
+        val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, sortOptions)
+
+        // Menentukan tampilan dropdown untuk adapter Spinner
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        // Menetapkan adapter ke Spinner
+        sortBySpinner.adapter = spinnerAdapter
+
+        // Menambahkan listener untuk menangani perubahan pengurutan yang dipilih
+        sortBySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                // Mendapatkan nilai pengurutan yang dipilih
+                val selectedSort = sortOptions[position]
+
+                // Memperbarui nilai currentSort berdasarkan pilihan pengurutan yang dipilih
+                when (selectedSort) {
+                    "Relevancy" -> currentSort = "relevancy"
+                    "Popularity" -> currentSort = "popularity"
+                    "Date" -> currentSort = "publishedAt"
+                }
+
+                // Di sini Anda dapat memanggil fetchAllNews() lagi dengan parameter pengurutan yang sesuai.
+                fetchAllNews(currentQuery ?: "")
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Tidak perlu melakukan apa-apa jika tidak ada yang dipilih.
+            }
+        }
+
+        // Implementasi infinite scrolling di sini
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
@@ -97,13 +143,13 @@ class SearchActivity : AppCompatActivity() {
 
     private fun fetchAllNews(query: String) {
         val apiKey = "63a860ab3e8548b9bdcf5769dfb50a9d"
-
         val apiService = ApiClient.apiService
         GlobalScope.launch(Dispatchers.IO) {
             try {
-                val response = apiService.getEverything(query, currentPage, apiKey)
+                val response = apiService.getEverything(query, currentPage, apiKey, currentSort)
                 if (response.isSuccessful) {
                     val articles = response.body()?.articles ?: emptyList()
+                    resultTextView.text = "${response.body()?.totalResults ?: 0} Result found :"
 
                     val validArticles = articles.filter { article ->
                         article.publishedAt != null &&

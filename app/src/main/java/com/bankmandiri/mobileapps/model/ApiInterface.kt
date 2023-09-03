@@ -16,7 +16,8 @@ interface ApiInterface {
     suspend fun getEverything(
         @Query("q") q: String,
         @Query("page") p: Int,
-        @Query("apiKey") apiKey: String
+        @Query("apiKey") apiKey: String,
+        @Query("sortBy") sort: String
     ): Response<ResponseApi>
 }
 

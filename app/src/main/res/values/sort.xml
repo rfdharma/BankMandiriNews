@@ -1,0 +1,7 @@
+<resources>
+    <string-array name="planets_array">
+        <item>Relevancy</item>
+        <item>Popularity</item>
+        <item>Date</item>
+    </string-array>
+</resources>

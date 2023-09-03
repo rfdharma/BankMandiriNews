@@ -1,4 +1,9 @@
 <resources>
+    <string-array name="sortBy">
+        <item>Relevancy</item>
+        <item>Popularity</item>
+        <item>Date</item>
+    </string-array>
     <string name="app_name">Mandiri News</string>
     <string name="title_activity_detail_berita_terkini">DetailBeritaTerkini</string>
     <string name="titleberitaterkini">Berita Terkini</string>

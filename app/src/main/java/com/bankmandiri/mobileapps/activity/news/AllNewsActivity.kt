@@ -49,12 +49,13 @@ class AllNewsActivity : AppCompatActivity() {
 
     private fun fetchAllNews() {
         val apiKey = "63a860ab3e8548b9bdcf5769dfb50a9d"
-        val q = "indonesia"
+        val q = "bank mandiri indonesia"
+        val sort = "relevancy"
 
         val apiService = ApiClient.apiService
         GlobalScope.launch(Dispatchers.IO) {
             try {
-                val response = apiService.getEverything(q, currentPageAllNews, apiKey)
+                val response = apiService.getEverything(q, currentPageAllNews, apiKey,sort)
                 if (response.isSuccessful) {
                     val articles = response.body()?.articles ?: emptyList()
 
