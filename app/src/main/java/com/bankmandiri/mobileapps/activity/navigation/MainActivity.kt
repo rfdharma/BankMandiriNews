@@ -49,6 +49,30 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun seeall(view: View) {
+        val textView = findViewById<TextView>(R.id.seeall)
+        val text = textView.text.toString()
+
+        val spannable = SpannableString(text)
+        spannable.setSpan(UnderlineSpan(), 0, text.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        textView.text = spannable
+        val intent = Intent(this, AllNewsActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun seealltopnews(view: View) {
+        val textView = findViewById<TextView>(R.id.seealltopnews)
+        val text = textView.text.toString()
+
+        val spannable = SpannableString(text)
+        spannable.setSpan(UnderlineSpan(), 0, text.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        textView.text = spannable
+        val intent = Intent(this, TopNewsActivity::class.java)
+        startActivity(intent)
+    }
+
     fun openTopNewsPage(view: View) {
         val textView = findViewById<TextView>(R.id.beritaterkini)
         val text = textView.text.toString()
